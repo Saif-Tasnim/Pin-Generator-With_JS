@@ -32,7 +32,7 @@ document.getElementById('number-plate').addEventListener('click',function(event)
         myPinField.value = "";
      }
 
-     else{
+     else if (myTypeNumber === '<'){
         const prevPinList = myPrevPin.split('');
         prevPinList.pop();
         const newPin = prevPinList.join('');
@@ -45,4 +45,27 @@ document.getElementById('number-plate').addEventListener('click',function(event)
     const myNewPin = myPrevPin + myTypeNumber;
     myPinField.value = myNewPin;
    }
+})
+
+
+document.getElementById('verify').addEventListener('click',function(){
+    const generate_pin_tf = document.getElementById('show-pin');
+    const my_pin_tf =  document.getElementById('my-pin');
+
+    const generate_pin = generate_pin_tf.value;
+    const my_pin = my_pin_tf.value;
+
+    const success_field = document.getElementById('pin-success');
+    const failed_field = document.getElementById('pin-failure');
+
+    if(generate_pin === my_pin){
+        success_field.style.display = "block";
+        failed_field.style.display = "none";
+    }
+
+    else{
+        success_field.style.display = "none";
+        failed_field.style.display = "block";
+    }
+
 })
